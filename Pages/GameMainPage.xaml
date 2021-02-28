@@ -1,0 +1,314 @@
+﻿<Page x:Class="EntertainmentX.Pages.GameMainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EntertainmentX.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="2050" d:DesignWidth="800"
+      Title="GameMainPage">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
+        <Grid Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="350"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="LblGameName" Content="Game Name" Grid.Row="0" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+                    <TextBlock Text="Комментариев: " FontSize="15" Foreground="Gray" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtCountComments" Text="Count" FontSize="15" VerticalAlignment="Center"/>
+                    <TextBlock Text="  /  " FontSize="15" Foreground="Gray" VerticalAlignment="Center"/>
+                    <TextBlock Text="Просмотров: " FontSize="15" Foreground="Gray" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtCountViews" Text="Count" FontSize="15" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0" Visibility="Hidden">
+                    <Button Content="Like" VerticalAlignment="Center" Width="45"/>
+                    <TextBlock Text="Cont" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                    <Button Content="DisLike" VerticalAlignment="Center" Width="45"/>
+                    <TextBlock Text="Cont" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Image x:Name="ImgGamePoster" Source="{Binding Poster}" Stretch="UniformToFill" Grid.Row="0"/>
+                    <Button x:Name="BtnSubs" Grid.Row="1" Margin="15,3,15,3" Content="Подписаться на обновление" Click="BtnSubs_Click"/>
+                    <StackPanel  Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Text="Подписалось: "/>
+                        <TextBlock x:Name="TxtCountFollowers" Text="Count" Foreground="Green"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1" Margin="10,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="0">
+                        <TextBlock Text="Дата выпуска: "/>
+                        <TextBlock x:Name="TxtDateRealse" Text="10 декабря 2020 г."/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1">
+                        <TextBlock Text="Жанр: "/>
+                        <ListBox x:Name="LstGenreGame" IsEnabled="False">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NameGenre}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="2">
+                        <TextBlock Text="Разработчик: "/>
+                        <TextBlock x:Name="TxtDeveloperGame" Text="{Binding NameDeveloper}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="3">
+                        <TextBlock Text="Издательство: "/>
+                        <TextBlock x:Name="TxtPublisherGame" Text="{Binding NamePublisher}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="4">
+                        <TextBlock Text="Платформа: "/>
+                        <ListBox x:Name="LstPlatformGame" IsEnabled="False">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NamePlatform}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="5">
+                        <TextBlock Text="Тип издания: "/>
+                        <TextBlock x:Name="TxtTypeEdition" Text="{Binding NameTypeEdition}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="6">
+                        <TextBlock Text="Язык интерфейса: "/>
+                        <ListBox x:Name="LstLangInter" IsEnabled="False">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NameLanguage}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="7">
+                        <TextBlock Text="Язык озвучки: "/>
+                        <ListBox x:Name="LstVoiceLang" IsEnabled="False">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NameLanguage}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="8">
+                        <TextBlock Text="Таблетка: "/>
+                        <TextBlock x:Name="TxtTabletGame" Text="{Binding NameTypeTablet}"/>
+                    </StackPanel>
+                    <TextBlock Text="Системные требования:" VerticalAlignment="Center" Grid.Row="9" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="10">
+                        <TextBlock Text="ОС: "/>
+                        <TextBlock x:Name="TxtSysRequipOS" Text="{Binding OS}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="11">
+                        <TextBlock Text="Процессор: "/>
+                        <TextBlock x:Name="TxtSysRequipCPU" Text="{Binding CPU}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="12">
+                        <TextBlock Text="Оперативная память: "/>
+                        <TextBlock x:Name="TxtSysRequipRAM" Text="{Binding RAM}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="13">
+                        <TextBlock Text="Видеокарта: "/>
+                        <TextBlock x:Name="TxtSysRequipGPU" Text="{Binding GPU}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="14">
+                        <TextBlock Text="Место на жестком диске: "/>
+                        <TextBlock x:Name="TxtSysRequipHDD" Text="{Binding HDD}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Описание игры:" FontSize="20" Margin="10,0,0,0"/>
+                <TextBlock x:Name="TxtDescGame" TextWrapping="Wrap" Margin="10,0,10,0" Grid.Row="1"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Трейлер / Геймплей:" FontSize="20" Margin="10,0,0,0"/>
+                <WebBrowser x:Name="WbNav" Grid.Row="1" Height="330" Width="600"/>
+            </Grid>
+            <Grid Grid.Row="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Скриншоты из игры:" FontSize="20" Margin="10,0,0,0"/>
+                <ListBox x:Name="LstScreenShoptGame" Grid.Row="1" IsEnabled="False" HorizontalAlignment="Center">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Foto}" Grid.Row="1"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            <Grid Grid.Row="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Торренты:" FontSize="20" Margin="10,0,0,0"/>
+                <ListBox x:Name="LstTorrentsGame" Grid.Row="1" HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Width="400" Margin="10">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="Размер: " FontSize="20"/>
+                                    <TextBlock Text="{Binding Size}" FontSize="20"/>
+                                    <TextBlock Text=" | RePack от " FontSize="20"/>
+                                    <TextBlock Text="{Binding NameOrg}" FontSize="20"/>
+                                </StackPanel>
+                                <Button Content="Donload Torrent" FontSize="20" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="200" Background="LightBlue" Margin="10" Click="BtnGoTorent_Clicked"/>
+                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="10,0,10,0" Grid.Row="2"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            <Grid Grid.Row="7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Комментарии:" FontSize="20" Margin="10,0,0,0"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="TxtComment" Grid.ColumnSpan="2" Margin="10" TextWrapping="Wrap"/>
+                    <Button x:Name="BtnGreateComment" Content="Оставить комментарий" Grid.Column="1" Grid.Row="1" FontSize="20" Margin="0,0,10,0" Width="250" VerticalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Center" Background="LightBlue" Click="BtnGreateComment_Click"/>
+                </Grid>
+                
+            </Grid>
+            <Grid Grid.Row="8">
+                <ListBox x:Name="LstComment" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10" HorizontalAlignment="Center" Width="680">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="10" Width="650">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="450"/>
+                                    <ColumnDefinition Width="150"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Height="35" Width="35" Source="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png"/>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding Users.Login}"/>
+                                    <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                                <Grid Grid.Column="3">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Datetime}" HorizontalAlignment="Right"/>
+                                    <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <Button Content="Like" VerticalAlignment="Center" Width="45" Click="LikeComment_Click" Background="{Binding CommentColorLike}"/>
+                                        <TextBlock Text="{Binding CountLike}" Margin="10,0,10,0" VerticalAlignment="Center"/>
+                                        <Button Content="DisLike" VerticalAlignment="Center" Width="45" Click="DisLikeComment_Click" Background="{Binding CommentColorDisLike}"/>
+                                        <TextBlock Text="{Binding CountDisLike}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+
+        </Grid>
+    </ScrollViewer>
+</Page>

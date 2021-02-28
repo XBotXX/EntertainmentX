@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b4f2c9f6920475db498bb8ae61a0280" Name="Diagram1">
+        <EntityTypeShape EntityType="EntertainmentBDModel.CommentsGame" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.FavotritesGame" Width="1.5" PointX="8.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.MarkGame" Width="1.5" PointX="8.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.Priv" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.TypeMark" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.Users" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.CommentGameHistory" Width="1.5" PointX="7.5" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.CrackOrg" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.Developers" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.Games" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.GamesToGenres" Width="1.5" PointX="8.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.GamesToPlatform" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.GameTrailer" Width="1.5" PointX="5.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.Genres" Width="1.5" PointX="6" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.InterfaceLanguage" Width="1.5" PointX="11.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.Language" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.Platforms" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.Publishers" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.ScreenshotsGame" Width="1.5" PointX="5.25" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.StatusCrack" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.SystemRequirements" Width="1.5" PointX="0.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.Torrents" Width="1.5" PointX="5.25" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.TypesEdition" Width="1.5" PointX="0.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.TypeTablet" Width="1.5" PointX="0.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.TypeTrailer" Width="1.5" PointX="3" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntertainmentBDModel.VoiceActingLanguage" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_CommentGameHistory_CommentsGame" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_CommentsGame_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_CommentsGame_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_FavotritesGame_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_FavotritesGame_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_MarkGame_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_MarkGame_TypeMark" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_MarkGame_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_Users_Priv" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_Games_Developers" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_Games_Publishers" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_Games_StatusCrack" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_Games_SystemRequirements" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_Games_TypesEdition" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_Games_TypeTablet" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_GamesToGenres_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_GamesToPlatform_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_GameTrailer_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_InterfaceLanguage_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_ScreenshotsGame_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_Torrents_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_VoiceActingLanguage_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_GamesToGenres_Genres" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_GamesToPlatform_Platforms" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_GameTrailer_TypeTrailer" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_InterfaceLanguage_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="EntertainmentBDModel.FK_VoiceActingLanguage_Language" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
