@@ -23,7 +23,7 @@ namespace EntertainmentX
             : base("name=Entities")
         {
         }
-    
+
         public static Entities GetContext()
         {
             if (_context == null)
@@ -31,7 +31,7 @@ namespace EntertainmentX
 
             return _context;
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -45,6 +45,7 @@ namespace EntertainmentX
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<CommentGameHistory> CommentGameHistory { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<ViewsGameHistory> ViewsGameHistory { get; set; }
         public virtual DbSet<CrackOrg> CrackOrg { get; set; }
         public virtual DbSet<Developers> Developers { get; set; }
         public virtual DbSet<Games> Games { get; set; }

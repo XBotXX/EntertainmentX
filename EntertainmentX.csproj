@@ -125,6 +125,9 @@
     <Compile Include="Pages\GameMainPage.xaml.cs">
       <DependentUpon>GameMainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SettingProfileUser.xaml.cs">
+      <DependentUpon>SettingProfileUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Platforms.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -170,6 +173,9 @@
     <Compile Include="Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewsGameHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="VoiceActingLanguage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -193,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ListGamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingProfileUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

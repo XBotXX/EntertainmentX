@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -21,6 +22,8 @@ namespace EntertainmentX.Pages
     /// </summary>
     public partial class ListGamePage : Page
     {
+        public string TypeListUser { get; set; }
+
         public ListGamePage()
         {
             InitializeComponent();
@@ -28,7 +31,18 @@ namespace EntertainmentX.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            LstGame.ItemsSource = Entities.GetContext().Games.ToList();
+            switch (TypeListUser)
+            {
+                case "MainList":
+                    LstGame.ItemsSource = Entities.GetContext().Games.ToList();
+                    break;
+                case "FaveList":
+                    LstGame.ItemsSource = Entities.GetContext().Users.Where(i => i.IdUser == Classes.IdUserClass.IdUser).FirstOrDefault().ListFavGame;
+                    break;
+                default:
+                    LstGame.ItemsSource = Entities.GetContext().Games.ToList();
+                    break;
+            }
         }
 
         private void LstGame_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -64,6 +78,25 @@ namespace EntertainmentX.Pages
             gameMainPage.TxtCountFollowers.Text = Entities.GetContext().FavotritesGame.Where(i => i.IdGame == ItemGame.IdGame).Count().ToString();
             gameMainPage.BtnSubs.Content = Entities.GetContext().FavotritesGame.Where(i => i.IdGame == ItemGame.IdGame && i.IdUser == Classes.IdUserClass.IdUser).Any() ? "Отписаться от обновления" : "Подписаться на обновление";
 
+            if (!Entities.GetContext().ViewsGameHistory.Where(i => i.idGame == ItemGame.IdGame && i.IdUser == Classes.IdUserClass.IdUser).Any())
+            {
+                var game = Entities.GetContext().Games.Where(i => i.IdGame == ItemGame.IdGame).FirstOrDefault();
+                game.CountViews += 1;
+
+                Entities.GetContext().Entry(game).State = EntityState.Modified;
+
+                Entities.GetContext().SaveChanges();
+
+                var gameHist = new ViewsGameHistory();
+                gameHist.idGame = ItemGame.IdGame;
+                gameHist.IdUser = Classes.IdUserClass.IdUser;
+                gameHist.Datetime = DateTime.Now;
+
+                Entities.GetContext().Entry(gameHist).State = EntityState.Added;
+
+                Entities.GetContext().SaveChanges();
+            }
+
             Classes.Manager.MainFrame.Navigate(gameMainPage);
         }
 
@@ -80,7 +113,18 @@ namespace EntertainmentX.Pages
 
         private void TxtSearchGame_TextChanged(object sender, TextChangedEventArgs e)
         {
-            LstGame.ItemsSource = Entities.GetContext().Games.Where(i =>i.Name.Contains(TxtSearchGame.Text)).ToList();
+            switch (TypeListUser)
+            {
+                case "MainList":
+                    LstGame.ItemsSource = Entities.GetContext().Games.Where(i => i.Name.Contains(TxtSearchGame.Text)).ToList();
+                    break;
+                case "FaveList":
+                    LstGame.ItemsSource = Entities.GetContext().Users.Where(i => i.IdUser == Classes.IdUserClass.IdUser).FirstOrDefault().ListFavGame.Where(i => i.Name.Contains(TxtSearchGame.Text)).ToList();
+                    break;
+                default:
+                    LstGame.ItemsSource = Entities.GetContext().Games.Where(i => i.Name.Contains(TxtSearchGame.Text)).ToList();
+                    break;
+            }
         }
     }
 }

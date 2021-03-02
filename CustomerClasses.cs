@@ -54,6 +54,17 @@ namespace EntertainmentX
         }
     }
 
+    public partial class Users
+    {
+        public List<Games> ListFavGame
+        {
+            get
+            {
+                return FavotritesGame.Select(i => i.Games).ToList();
+            }
+        }
+    }
+
     public partial class CommentsGame
     {
         public string CommentColorLike

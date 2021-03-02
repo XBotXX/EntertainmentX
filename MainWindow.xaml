@@ -22,15 +22,10 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Content="Главная страница" FontSize="15" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="Black" Grid.Row="0"/>
-                <Button Content="Избранное" FontSize="15" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="Black" Grid.Row="1"/>
-                <Button Content="Загруженные" FontSize="15" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="Black" Grid.Row="2"/>
-                <Button Content="Настройки профиля" FontSize="15" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="Black" Grid.Row="3"/>
+                <Button x:Name="BtnMainPage" Content="Главная страница" FontSize="15" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="Black" Grid.Row="0" Click="BtnMainPage_Click"/>
+                <Button x:Name="BtnFavGame" Content="Избранное" FontSize="15" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="Black" Grid.Row="1" Click="BtnFavGame_Click"/>
+                <Button x:Name="BtnSettingProfile" Content="Настройки профиля" FontSize="15" HorizontalContentAlignment="Center" Background="{x:Null}" Foreground="Black" Grid.Row="2" Click="BtnSettingProfile_Click"/>
             </Grid>
         </Border>
         <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">

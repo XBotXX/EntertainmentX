@@ -29,11 +29,38 @@ namespace EntertainmentX
         {
             Classes.ParentMainWindow.parentWindow = this;
 
-            MainFrame.Navigate(new Pages.ListGamePage());
+            Pages.ListGamePage listGamePage = new Pages.ListGamePage();
+
+            listGamePage.TypeListUser = "MainList";
+
+            MainFrame.Navigate(listGamePage);
 
             Classes.Manager.MainFrame = MainFrame;
 
             UserFoto.Source = new BitmapImage(new Uri(@"https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png"));
+        }
+
+        private void BtnMainPage_Click(object sender, RoutedEventArgs e)
+        {
+            Pages.ListGamePage listGamePage = new Pages.ListGamePage();
+
+            listGamePage.TypeListUser = "MainList";
+
+            Classes.Manager.MainFrame.Navigate(listGamePage);
+        }
+
+        private void BtnFavGame_Click(object sender, RoutedEventArgs e)
+        {
+            Pages.ListGamePage listGamePage = new Pages.ListGamePage();
+
+            listGamePage.TypeListUser = "FaveList";
+
+            Classes.Manager.MainFrame.Navigate(listGamePage);
+        }
+
+        private void BtnSettingProfile_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

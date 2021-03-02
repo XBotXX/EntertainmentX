@@ -80,6 +80,15 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="ViewsGameHistory">
+          <Key>
+            <PropertyRef Name="idGame" />
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="idGame" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="Datetime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="CrackOrg">
           <Key>
             <PropertyRef Name="IdNameOrg" />
@@ -658,6 +667,7 @@
           <EntitySet Name="Users" EntityType="Self.Users" Schema="Client" store:Type="Tables" />
           <EntitySet Name="CommentGameHistory" EntityType="Self.CommentGameHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewsGameHistory" EntityType="Self.ViewsGameHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CrackOrg" EntityType="Self.CrackOrg" Schema="Game" store:Type="Tables" />
           <EntitySet Name="Developers" EntityType="Self.Developers" Schema="Game" store:Type="Tables" />
           <EntitySet Name="Games" EntityType="Self.Games" Schema="Game" store:Type="Tables" />
@@ -880,6 +890,15 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ViewsGameHistory">
+          <Key>
+            <PropertyRef Name="idGame" />
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="idGame" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="CrackOrg">
           <Key>
@@ -1467,6 +1486,7 @@
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="CommentGameHistory" EntityType="Self.CommentGameHistory" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="ViewsGameHistory" EntityType="Self.ViewsGameHistory" />
           <EntitySet Name="CrackOrg" EntityType="Self.CrackOrg" />
           <EntitySet Name="Developers" EntityType="Self.Developers" />
           <EntitySet Name="Games" EntityType="Self.Games" />
@@ -1721,6 +1741,15 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewsGameHistory">
+            <EntityTypeMapping TypeName="EntertainmentBDModel.ViewsGameHistory">
+              <MappingFragment StoreEntitySet="ViewsGameHistory">
+                <ScalarProperty Name="idGame" ColumnName="idGame" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
