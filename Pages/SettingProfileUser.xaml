@@ -8,12 +8,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SettingProfileUser">
 
-    <Grid Background="White" Height="350" Width="450">
+    <Grid Background="White" Height="350" Width="450" HorizontalAlignment="Left" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -32,5 +33,6 @@
         <TextBox x:Name="TxtNewPassword" FontSize="20" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
         <TextBox x:Name="TxtNewPassRepeat" FontSize="20" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1"/>
         <Button x:Name="BtnSave" Content="Сохранить" FontSize="20" Grid.Column="1" Grid.Row="5" Margin="10" Click="BtnSave_Click"/>
+        <Button x:Name="BtnExit" Content="Выйти" FontSize="20" Grid.Column="1" Grid.Row="6" Margin="10" Click="BtnExit_Click"/>
     </Grid>
 </Page>

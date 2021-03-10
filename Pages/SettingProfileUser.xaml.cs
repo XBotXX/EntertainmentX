@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,16 @@ namespace EntertainmentX.Pages
             // обращение к родительскому окну
             MainWindow mainWindow = Classes.ParentMainWindow.parentWindow as MainWindow;
             mainWindow.TxtPsevdoUser.Text = userInf.Login;
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText(@"FilesUser/AutInfUser.txt", string.Empty);
+
+            Windows.AutorizationWindow autorizationWindow = new Windows.AutorizationWindow();
+            autorizationWindow.Show();
+
+            Classes.ParentMainWindow.parentWindow.Close();
         }
     }
 }

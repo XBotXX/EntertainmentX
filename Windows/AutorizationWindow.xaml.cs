@@ -36,9 +36,8 @@ namespace EntertainmentX.Windows
 
                 if(textFromFile.Length == 2)
                 {
-                    TxtLogin.Text = textFromFile[0].ToString();
-                    TxtPassword.Password = textFromFile[1].ToString();
                     FileFlag = true;
+                    AuthMethod(textFromFile[0].ToString(), textFromFile[1].ToString());
                 }
 
             }
@@ -46,22 +45,40 @@ namespace EntertainmentX.Windows
 
         private void BtnGoAut_Click(object sender, RoutedEventArgs e)
         {
-            var res = Entities.GetContext().Users.Where(i => i.Email == TxtLogin.Text && i.Password == TxtPassword.Password && i.IdStatusActiveEmail == true).ToList();
-            if (res.Any())
+            AuthMethod(TxtLogin.Text, TxtPassword.Password);
+        }
+
+        public void AuthMethod(string Log, string Pass)
+        {
+            try
             {
-                if (ChkUserAut.IsChecked == true && FileFlag == false)
+                var res = Entities.GetContext().Users.Where(i => i.Email == Log && i.Password == Pass && i.IdStatusActiveEmail == true).ToList();
+                if (res.Any())
                 {
-                    using (FileStream fstream = new FileStream($"FilesUser/AutInfUser.txt", FileMode.OpenOrCreate))
+                    if (ChkUserAut.IsChecked == true && FileFlag == false)
                     {
-                        byte[] array = System.Text.Encoding.Default.GetBytes(res.FirstOrDefault().Email+","+ res.FirstOrDefault().Password);
-                        fstream.Write(array, 0, array.Length);
+                        using (FileStream fstream = new FileStream($"FilesUser/AutInfUser.txt", FileMode.OpenOrCreate))
+                        {
+                            byte[] array = System.Text.Encoding.Default.GetBytes(res.FirstOrDefault().Email + "," + res.FirstOrDefault().Password);
+                            fstream.Write(array, 0, array.Length);
+                        }
                     }
+
+                    Classes.IdUserClass.IdUser = res.FirstOrDefault().IdUser;
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.TxtPsevdoUser.Text = res.FirstOrDefault()?.Login;
+                    mainWindow.Show();
+                    this.Close();
                 }
-                Classes.IdUserClass.IdUser = res.FirstOrDefault().IdUser;
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.TxtPsevdoUser.Text = res.FirstOrDefault()?.Login;
-                mainWindow.Show();
-                this.Close();
+                else
+                {
+                    TxtErrorLogAndPas.Visibility = Visibility.Visible;
+                }
+            }
+            catch(Exception ex)
+            {
+                TxtErrorLogAndPas.Text = "Нет соединения";
+                TxtErrorLogAndPas.Visibility = Visibility.Visible;
             }
         }
 
