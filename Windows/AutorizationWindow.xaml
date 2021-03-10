@@ -23,7 +23,7 @@
             <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,0,0" Orientation="Horizontal">
                 <Label Content="Логин:" FontSize="20" FontWeight="Bold" Margin="0,0,260,0"/>
                 <TextBlock FontSize="20"  VerticalAlignment="Bottom" Margin="0,0,0,5">           
-                    <Hyperlink NavigateUri="http://www.google.com">
+                    <Hyperlink NavigateUri="http://www.google.com" x:Name="RegLink" Click="RegLink_Click">
                         Регистрация
                     </Hyperlink>
                 </TextBlock>
@@ -32,7 +32,7 @@
             <StackPanel Grid.Row="3" VerticalAlignment="Bottom" Margin="10,0,0,0" Orientation="Horizontal">
                 <Label Content="Пароль:" FontSize="20" FontWeight="Bold" Grid.Row="3" Margin="0,0,210,0"/>
                 <TextBlock FontSize="20"  VerticalAlignment="Bottom" Margin="0,0,0,5">           
-                    <Hyperlink NavigateUri="http://www.google.com">
+                    <Hyperlink NavigateUri="http://www.google.com" x:Name="FogetPas" Click="FogetPas_Click">
                         Забыли пароль?
                     </Hyperlink>
                 </TextBlock>

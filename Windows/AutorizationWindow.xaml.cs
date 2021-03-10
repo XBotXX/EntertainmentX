@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -62,6 +63,18 @@ namespace EntertainmentX.Windows
                 mainWindow.Show();
                 this.Close();
             }
+        }
+
+        private void RegLink_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("C:/Users/User/Desktop/PythonMain/WTFP/app.py");
+            Process.Start("http://127.0.0.1:5000/");
+        }
+
+        private void FogetPas_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("C:/Users/User/Desktop/PythonMain/MsBD/Start.py");
+            Process.Start("http://127.0.0.1:5000/");
         }
     }
 }

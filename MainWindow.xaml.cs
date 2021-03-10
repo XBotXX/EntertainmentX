@@ -60,7 +60,14 @@ namespace EntertainmentX
 
         private void BtnSettingProfile_Click(object sender, RoutedEventArgs e)
         {
+            Pages.SettingProfileUser settingProfileUser = new Pages.SettingProfileUser();
 
+            var userInf = Entities.GetContext().Users.Where(i => i.IdUser == Classes.IdUserClass.IdUser).FirstOrDefault();
+
+            settingProfileUser.TxtLogin.Text = userInf.Login;
+            settingProfileUser.TxtEmail.Text = userInf.Email;
+
+            Classes.Manager.MainFrame.Navigate(settingProfileUser);
         }
     }
 }

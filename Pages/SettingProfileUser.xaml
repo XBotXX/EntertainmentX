@@ -26,6 +26,11 @@
         <Label Content="Email:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2"/>
         <Label Content="New Password:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3"/>
         <Label Content="New Password repeat:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4"/>
-        <Button x:Name="BtnSave" Content="Сохранить" FontSize="20" Grid.Column="1" Grid.Row="5" Margin="10"/>
+
+        <TextBox x:Name="TxtLogin" FontSize="20" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="TxtEmail" FontSize="20" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+        <TextBox x:Name="TxtNewPassword" FontSize="20" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1"/>
+        <TextBox x:Name="TxtNewPassRepeat" FontSize="20" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1"/>
+        <Button x:Name="BtnSave" Content="Сохранить" FontSize="20" Grid.Column="1" Grid.Row="5" Margin="10" Click="BtnSave_Click"/>
     </Grid>
 </Page>
