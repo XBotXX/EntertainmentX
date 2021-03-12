@@ -31,6 +31,9 @@ namespace EntertainmentX
 
             Pages.ListGamePage listGamePage = new Pages.ListGamePage();
 
+            ///////////////////////////////////////////////////////////
+            Pages.ListGamePage.ListGamesBuff.Add(Entities.GetContext().Games.ToList());
+
             listGamePage.TypeListUser = "MainList";
 
             MainFrame.Navigate(listGamePage);
@@ -38,6 +41,14 @@ namespace EntertainmentX
             Classes.Manager.MainFrame = MainFrame;
 
             UserFoto.Source = new BitmapImage(new Uri(@"https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png"));
+
+            Random rnd = new Random();
+            var gamesAll = Entities.GetContext().Games.ToList();
+            var res = gamesAll.Select(i => gamesAll[rnd.Next(0, gamesAll.Count)]).ToList().FirstOrDefault();
+            TxtNameMainGame.Text = res.Name;
+            ImgMainGame.Source = new BitmapImage(new Uri(res.Poster));
+
+            LstGenre.ItemsSource = Entities.GetContext().Genres.ToList();
         }
 
         private void BtnMainPage_Click(object sender, RoutedEventArgs e)
@@ -68,6 +79,21 @@ namespace EntertainmentX
             settingProfileUser.TxtEmail.Text = userInf.Email;
 
             Classes.Manager.MainFrame.Navigate(settingProfileUser);
+        }
+
+        private void GenresFilter_Click(object sender, RoutedEventArgs e)
+        {
+            Button cmd = (Button)sender;
+
+            string nameGenres = cmd.Content.ToString();
+
+            var res = from genres in Entities.GetContext().Genres where genres.NameGenre == nameGenres
+                      join gtog in Entities.GetContext().GamesToGenres on genres.IdGenre equals gtog.IdGenre
+                      join games in Entities.GetContext().Games on gtog.IdGame equals games.IdGame
+                      select games;
+
+            Pages.ListGamePage.ListGamesBuff[0] = res.ToList();
+
         }
     }
 }

@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Label Content="Search: " FontSize="20"/>
@@ -25,18 +26,16 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Height="320" Width="180" Margin="10">
+                    <Grid Height="220" Width="120" Margin="10">
                         <Border BorderBrush="Black" BorderThickness="2">
-                            <Grid Height="320" Width="180">
+                            <Grid Height="220" Width="120">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                                     <RowDefinition Height="0.2*"/>
                                 </Grid.RowDefinitions>
                                 <Image Source="{Binding Poster}" Stretch="UniformToFill"/>
-                                <Label FontSize="15" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0">
-                                    <Label.Content>
-                                        <AccessText TextWrapping="Wrap" Text="{Binding Name}"/>
-                                    </Label.Content>
+                                <Label FontSize="10" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0">
+                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" />
                                 </Label>
                             </Grid>
                         </Border>
@@ -44,6 +43,22 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        
+
+        <ListBox x:Name="LstPage" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="2">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel>
+                            <Button Content="{Binding NomerPage}" Background="LightBlue"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>

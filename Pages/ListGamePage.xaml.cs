@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -24,9 +26,38 @@ namespace EntertainmentX.Pages
     {
         public string TypeListUser { get; set; }
 
+        public static ObservableCollection<List<Games>> ListGamesBuff = new ObservableCollection<List<Games>>();
+
         public ListGamePage()
         {
             InitializeComponent();
+
+            ListGamesBuff.CollectionChanged += ListGamesBuff_CollectionChanged;
+
+            //ListGamesBuff.Add(Entities.GetContext().Games.ToList());
+            //ListGamesBuff.RemoveAt(1);
+            //ListGamesBuff[0] = Entities.GetContext().Games.ToList();
+        }
+
+        private void ListGamesBuff_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            LstGame.ItemsSource = ListGamesBuff[0].ToList();
+            //switch (e.Action)
+            //{
+            //    case NotifyCollectionChangedAction.Add: // если добавление
+            //        List<Games> newGames = e.NewItems[0] as List<Games>;
+            //        MessageBox.Show($"Добавлен новый объект: {newGames.Select(i=>i.Name)}");
+            //        break;
+            //    case NotifyCollectionChangedAction.Remove: // если удаление
+            //        List<Games> oldGames = e.OldItems[0] as List<Games>;
+            //        MessageBox.Show($"Удален объект: {oldGames.Select(i => i.Name)}");
+            //        break;
+            //    case NotifyCollectionChangedAction.Replace: // если замена
+            //        List<Games> replacedGames = e.OldItems[0] as List<Games>;
+            //        List<Games> replacingGames = e.NewItems[0] as List<Games>;
+            //        MessageBox.Show($"Объект {replacedGames.Select(i => i.Name)} заменен объектом {replacingGames.Select(i => i.Name)}");
+            //        break;
+            //}
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -43,6 +74,7 @@ namespace EntertainmentX.Pages
                     LstGame.ItemsSource = Entities.GetContext().Games.ToList();
                     break;
             }
+
         }
 
         private void LstGame_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -126,5 +158,6 @@ namespace EntertainmentX.Pages
                     break;
             }
         }
+
     }
 }
